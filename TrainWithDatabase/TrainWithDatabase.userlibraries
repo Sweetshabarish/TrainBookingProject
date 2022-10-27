@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<eclipse-userlibraries>
+  <library name="postgresql-42.5.0">
+    <archive path="/Users/shabari-pt6233/Downloads/postgresql-42.5.0.jar" />
+  </library>
+</eclipse-userlibraries>
+
