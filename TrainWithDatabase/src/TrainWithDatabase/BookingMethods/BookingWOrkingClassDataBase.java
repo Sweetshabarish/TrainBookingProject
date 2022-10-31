@@ -19,13 +19,18 @@ public  class BookingWOrkingClassDataBase {
     public static String TrainNumber;//Getting train Number from thr user
 
     public static void BookingMethod() throws SQLException {
+        int count =0;
 
         System.out.println(TrainConstants.enterTheTrainNumber);//Took from the train constant class for entering the train number
         TrainNumber = sscannerClassObject.next();//getting train number form the user
-          ResultSet resultSetObjectForDateCheck = ExcetuteQureyThrowDatabase.connectExecuteQuery("Select * from traindetails;");
+          ResultSet resultSetObjectForDateCheck = ExcetuteQureyThrowDatabase.connectExecuteQuery("Select count(trainnumber) from traindetails where trainnumber='"+TrainNumber+"';");
 
           while (resultSetObjectForDateCheck.next()) {
-              if (TrainNumber.equals(resultSetObjectForDateCheck.getString(2))) {
+              count = resultSetObjectForDateCheck.getInt(1);
+          }
+            //  if (TrainNumber.equals(resultSetObjectForDateCheck.getString(1))) {
+        if(count==1){
+
                   System.out.println(TrainConstants.displayDesign);//display the desigin from the trainconstants class
                   System.out.println();
                   TrainDetailsMain.trainDetailsExecution("Select trainname,trainnumber,startlocation,endlocation from traindetails where trainnumber='" + TrainNumber + "';");//the query will passed to TrainDetailClass where query will execute and gives output.
@@ -98,11 +103,11 @@ public  class BookingWOrkingClassDataBase {
               }
               else {
                   System.out.println("Please enter the train number as mentioned");
-                  break;
+
               }
           }
 
-        }
+
     }
 
 
