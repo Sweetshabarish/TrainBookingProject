@@ -62,7 +62,9 @@ public  class BookingWOrkingClassDataBase {
                                   System.out.println(TrainConstants.enterNumberofSeats);
                                   int seatsnumber = sscannerClassObject.nextInt();
                                   if (seatsnumber <= 4) {//the one user can book 4 ticket at a time,one pnr can contain 4 tickets
-                                      PnrnUmberStoring = generateNumberObject.getPnrNumber();//gets a pnr number from pnrgenrating class
+
+                                      PnrnUmberStoring = CheckPnrNumber.checkPnrNumber(generateNumberObject.getPnrNumber());//gets a pnr number from pnrgenrating class and it will check wheater pnr generated is already exist or not.
+
                                       StoredSeats = StoredSeats - seatsnumber;
                                       for (int innerindex = 0; innerindex < seatsnumber; innerindex++) {
                                           FileUserDatabase.AddlList(PnrnUmberStoring);//here the process will start.where this will ask the customer details and number of the tickets to book and store in ticket object
